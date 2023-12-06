@@ -1,23 +1,28 @@
+import pygame
+from config import Config
+
 class Bomba:
     frame = 0
 
-    def __init__(self, r, x, y, map, bomber):
+    def __init__(self, r, x, y, map, bomber, player):
         self.range = r
         self.pos_x = x
         self.pos_y = y
         self.time = 3000
         self.bomber = bomber
         self.sectors = []
+        self.player = player
+        
         self.get_range(map)
-
+ 
     def update(self, dt):
 
         self.time = self.time - dt
 
-        if self.time < 1000:
-            self.frame = 2
-        elif self.time < 2000:
-            self.frame = 1
+        # if self.time < 1000:
+        #     self.frame = 2
+        # elif self.time < 2000:
+        #     self.frame = 1
 
     def get_range(self, map):
 
@@ -55,3 +60,11 @@ class Bomba:
             elif map[self.pos_x][self.pos_y - x] == 2:
                 self.sectors.append([self.pos_x, self.pos_y - x])
                 break
+ #carregar a imagems para ser blit            
+    def load_img(scale):
+        resize_width = scale
+        resize_height = scale
+        config = Config()
+        endereco = pygame.image.load(config.endereco_img+'/items/bomba.png')
+        endereco = pygame.transform.scale(endereco,(resize_width, resize_height))
+        return endereco

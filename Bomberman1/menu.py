@@ -72,7 +72,7 @@ def menu_loop():
         title_background_color=MENU_TITLE_COLOR
     )
 
-   
+#menu principal de escolha de 1 ou 2 personagem / sair
     main_menu = pygame_menu.Menu(
         theme= menu_theme,
         height=int(WINDOW_SIZE[1] * WINDOW_SCALE),
@@ -86,6 +86,7 @@ def menu_loop():
     main_menu.add.button('Quit', pygame_menu.events.EXIT)
 
     running = True
+#loop de atualização dos"frames do jodo"
     while running:
 
         clock.tick(FPS)
