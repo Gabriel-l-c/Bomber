@@ -1,6 +1,7 @@
 import pygame
 import sys
 import random
+import time
 
 from config import Config
 from personagem import Personagem
@@ -42,8 +43,8 @@ class Jogo:
         self.projeteis =[]
         self.mapa = Mapa(surface,scale)
         self.player = Personagem(n_play)
-        self.power_ups = []
-        self.explosiond =[]
+        # self.power_ups = []
+        # self.explosiond =[]
         self.carregar_mapa(scale)
         
 
@@ -112,6 +113,8 @@ class Jogo:
         grid = [row[:] for row in GRID_BASE]
         self.generate_map(grid)
         
+        di = time.time()
+        
         game_ended = False
         clock = pygame.time.Clock()
         
@@ -128,13 +131,18 @@ class Jogo:
         self.bombas_img= bomb_img
         
         while running:
-            dt = clock.tick(15)
+            
+            df = time.time()
+            
+            dt = clock.tick()
+            
             self.draw(grid, tile_size, self.bombas_img, game_ended)
             for e in pygame.event.get():
                 if e.type == pygame.QUIT:
                     sys.exit(0)
                 elif e.type == pygame.KEYDOWN:
                     if e.key == pygame.K_ESCAPE:
+                        print(df-di)
                         running = False
                         
             if self.player.n_player <=1:         
@@ -142,31 +150,34 @@ class Jogo:
                     keys = pygame.key.get_pressed()
                     # = player.direction
                     movement = False
+                    #aqui sera passado o  movimento, com : posicao x e y, o "mapa", lista ene_blocks, lista powrerups,
                     if keys[pygame.K_s]:
                         temp = 0
-                        self.player.move(0, 1, grid, self.ene_blocks, self.power_ups,0)
+                        self.player.move(0, 1, grid,0)
                         movement = True
                     elif keys[pygame.K_d]:
                         temp = 1
-                        self.player.move(1, 0, grid, self.ene_blocks, self.power_ups,0)
+                        self.player.move(1, 0, grid,0)
                         movement = True
                     elif keys[pygame.K_w]:
                         temp = 2
-                        self.player.move(0, -1, grid, self.ene_blocks, self.power_ups,0)
+                        self.player.move(0, -1, grid,0)
                         movement = True
                     elif keys[pygame.K_a]:
                         temp = 3
-                        self.player.move(-1, 0, grid, self.ene_blocks, self.power_ups,0)
+                        self.player.move(-1, 0, grid,0)
                         movement = True
                         
                     elif keys[pygame.K_SPACE]:
-                        for q in range(0, self.player.n_player):
-                            if self.player.life[q] == True:
-                                temp_bomb = self.player.plant_bomb(grid,(self.player.n_player-1))
+                            if self.player.life[0] == True:
+                                temp_bomb = self.player.plant_bomb(grid,0)
                                 self.bombas.append(temp_bomb)
                                 grid[temp_bomb.pos_x][temp_bomb.pos_y] = 3
-                                self.player.bomb_limit[q] -= 1
-                        
+                                self.player.bomb_limit[0] -= 1
+                # quando o tempo passar de 120 segundos = fim da partida            
+                if  df-di > 120:
+                    running = False
+                    
             # for e in pygame.event.get():
             #     for q in range(0, self.player.n_player-1):
             #         if self.player.life[0] == True:
@@ -188,7 +199,7 @@ class Jogo:
         self.projeteis.clear()
         self.enemys.clear()
         self.ene_blocks.clear()
-        self.power_ups.clear()
+  
                                 
             # self.update_bombs(grid, dt)
  
@@ -196,12 +207,13 @@ class Jogo:
         for b in self.bombas:
             b.update(dt)
             if b.time < 1:
-                b.bomber.bomb_limit[b.player] += 1
+                # b.bomber.bomb_limit[b.player] += 1
                 grid[b.pos_x][b.pos_y] = 0
                 exp_temp = Projetil(b.pos_x, b.pos_y, b.range)
-                exp_temp.explode(grid, self.bombas, b, self.power_ups)
-                exp_temp.clear_sectors(grid, random, self.power_ups)
+                exp_temp.explode(grid, self.bombas, b)
+                exp_temp.clear_sectors(grid, random)
                 self.projeteis.append(exp_temp)
+                
         # if self.player not in self.enemys:
         self.player.check_death(self.projeteis)
         for en in self.enemys:

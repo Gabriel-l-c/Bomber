@@ -1,5 +1,6 @@
 import pygame
 import pygame_menu
+import time
 
 from mapa import Mapa
 from jogo import Jogo
@@ -86,11 +87,14 @@ def menu_loop():
     main_menu.add.button('Quit', pygame_menu.events.EXIT)
 
     running = True
+    di = time.time()
 #loop de atualização dos"frames do jodo"
     while running:
-
+        
+        df = time.time()
         clock.tick(FPS)
-
+        temp_jogo = pygame.time.get_ticks()
+        
         main_background()
 
         events = pygame.event.get()
@@ -102,6 +106,10 @@ def menu_loop():
             main_menu.mainloop(surface, main_background)
 
         pygame.display.flip()
+        
+        if df-di == 1000:
+            running = False
+            exit()
 
     exit()
 

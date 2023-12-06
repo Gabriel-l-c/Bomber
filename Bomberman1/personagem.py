@@ -19,7 +19,7 @@ class Personagem:
         self.bomb_limit = [1,1]
         pass
 
-    def move(self, dx, dy, grid, enemys, power_ups, n):
+    def move(self, dx, dy, grid,  n):
         tempx = int(self.pos_x[n] )
         tempy = int(self.pos_y[n] )
 
@@ -30,13 +30,13 @@ class Personagem:
             for j in range(len(grid[i])):
                 map[i].append(grid[i][j])
 
-        for x in enemys:
-            if x == self:
-                continue
-            elif not x.life:
-                continue
-            else:
-                map[int(x.pos_x/Personagem.TILE_SIZE)][int(x.pos_y/Personagem.TILE_SIZE )] = 2
+        # for x in enemys:
+        #     if x == self:
+        #         continue
+        #     elif not x.life:
+        #         continue
+        #     else:
+        #         map[int(x.pos_x/Personagem.TILE_SIZE)][int(x.pos_y/Personagem.TILE_SIZE )] = 2
 
         # if self.pos_x[n]  != 0 and dx == 0:
         #     if self.pos_x[n]  == 1:

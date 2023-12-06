@@ -16,14 +16,9 @@ class Bomba:
         self.get_range(map)
  
     def update(self, dt):
-
         self.time = self.time - dt
-
-        # if self.time < 1000:
-        #     self.frame = 2
-        # elif self.time < 2000:
-        #     self.frame = 1
-
+        pass
+        
     def get_range(self, map):
 
         self.sectors.append([self.pos_x, self.pos_y])

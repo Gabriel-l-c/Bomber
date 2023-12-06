@@ -6,4 +6,4 @@ class Config:
     PLAYER = 2
     NONE = 3
     def __init__(self):
-        self.endereco_img ='C:/Users/Lenovo/Desktop/Bomberman/Bomberman1/sprites'
+        self.endereco_img ='/home/lcee/Desktop/Bomber/Bomberman1/sprites'

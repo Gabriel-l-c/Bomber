@@ -1,7 +1,7 @@
 import pygame
 from config import Config
 class Alienigena:
-    dire = [[1, 0, 1], [0, 1, 0], [-1, 0, 3], [0, -1, 2]]
+    # dire = [[1, 0, 1], [0, 1, 0], [-1, 0, 3], [0, -1, 2]]
     TILE_SIZE = 4
     def __init__(self, x,y):
         self.endereco = None

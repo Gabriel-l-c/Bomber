@@ -4,7 +4,7 @@ import pygame
 import random 
 
 from enum import Enum
-
+from config import Config
 BACKGROUND_COLOR = (107, 142, 35)
 
 font = None
@@ -15,7 +15,8 @@ ene_blocks = []
 bombs = []
 explosions = []
 power_ups = []
-endereco_base = 'C:/Users/Lenovo/Desktop/Bomberman/Bomberman1/sprites'
+config = Config()
+endereco_base = config.endereco_img
 GRID_BASE = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
              [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
              [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
