@@ -1,5 +1,4 @@
 from config import Config
-from power_up import PowerUp
 
 class Projetil:
 
@@ -23,9 +22,7 @@ class Projetil:
     def bomb_chain(self, bombs, map):
 
         for s in self.sectors:
-            # for x in power_ups:
-            #     if x.pos_x == s[0] and x.pos_y == s[1]:
-            #         power_ups.remove(x)
+
 
             for x in bombs:
                 if x.pos_x == s[0] and x.pos_y == s[1]:
@@ -36,12 +33,7 @@ class Projetil:
     def clear_sectors(self, map, random):
 
         for i in self.sectors:
-            # if map[i[0]][i[1]] == 2:
-                # r = random.randint(0, 9)
-                # if r == 0:
-                #     power_ups.append(PowerUp(i[0], i[1], Config.BOMB))
-                # elif r == 1:
-                #     power_ups.append(PowerUp(i[0], i[1], Config.FIRE))
+ 
 
             map[i[0]][i[1]] = 0
 

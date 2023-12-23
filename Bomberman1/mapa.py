@@ -17,19 +17,7 @@ explosions = []
 power_ups = []
 config = Config()
 endereco_base = config.endereco_img
-GRID_BASE = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+
 
 class TileType(Enum):
     WALL = 1 
@@ -71,49 +59,4 @@ class Mapa:
 
         self.map_iamges = [grass_img,block_img,box_img, grass_img]
         
-        # self.carregar_mapa(scale)
-        
-# #desenhar o mapa com grama, pedras, barricadas
-#     def desenhar_mapa(self,grid, tile_size, game_ended ):
-#         self.surface.fill(BACKGROUND_COLOR)
-#         for i in range(len(grid)):
-#             for j in range(len(grid[i])):
-#                 self.surface.blit(self.map_iamges[grid[i][j]], (i * tile_size, j * tile_size, tile_size, tile_size))
-                
-#         if game_ended:
-#             tf = font.render("Press ESC to go back to menu", False, (153, 153, 255))
-#             self.surface.blit(tf, (10, 10))
-
-#         pygame.display.update()
-        
-# #gerar o mapa com o posicionamento dos personagens
-#     def generate_map(self, grid):
-#         for i in range(1, len(grid) - 1):
-#             for j in range(1, len(grid[i]) - 1):
-#                 if grid[i][j] != 0:
-#                     continue
-#                 elif (i < 3 or i > len(grid) - 4) and (j < 3 or j > len(grid[i]) - 4):
-#                     continue
-#                 if random.randint(0,9)<7:
-#                     grid[i][j] = 2
-#         return
-    
-#     def carregar_mapa(self, tile_size):
-#         grid = [row[:] for row in GRID_BASE]
-#         self.generate_map(grid)
-#         game_ended = False
-#         clock = pygame.time.Clock()
-
-#         running = True
-#         game_ended = False
-#         while running:
-#             dt = clock.tick(15)
-#             self.desenhar_mapa(grid, tile_size, game_ended)
-#             for e in pygame.event.get():
-#                 if e.type == pygame.QUIT:
-#                     sys.exit(0)
-#                 elif e.type == pygame.KEYDOWN:
-#                     if e.key == pygame.K_ESCAPE:
-#                         running = False
-
-    
+      

@@ -1,15 +1,17 @@
 import pygame
 from config import Config
-
+#from personagem import Personagem
+#from personagem import Personagem
+# ImportError: cannot import name 'Personagem' from partially initialized module 'personagem' (most likely due to a circular import) (c:\Users\Lenovo\Desktop\Bomber1\Bomberman1\personagem.py)
 class Bomba:
     frame = 0
 
-    def __init__(self, r, x, y, map, bomber, player):
+    def __init__(self, r,x, y, map, bombardiadores, player:int):
         self.range = r
         self.pos_x = x
         self.pos_y = y
-        self.time = 3000
-        self.bomber = bomber
+        self.time = 2000
+        self.bomber = bombardiadores
         self.sectors = []
         self.player = player
         
@@ -17,7 +19,7 @@ class Bomba:
  
     def update(self, dt):
         self.time = self.time - dt
-        pass
+        
         
     def get_range(self, map):
 
@@ -39,6 +41,7 @@ class Bomba:
             elif map[self.pos_x - x][self.pos_y] == 2:
                 self.sectors.append([self.pos_x - x, self.pos_y])
                 break
+            
         for x in range(1, self.range):
             if map[self.pos_x][self.pos_y + x] == 1:
                 break
