@@ -39,7 +39,7 @@ class Inimigos:
             for j in range(len(grid[i])):
                 map[i].append(grid[i][j])
 
-        self.time =self.time - clock
+        self.time = self.time - clock
         if self.time < 1:
             
             if self.variavel_c == 0:

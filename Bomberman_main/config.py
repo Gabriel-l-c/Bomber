@@ -15,4 +15,4 @@ class Config:
 
     def __init__(self) : 
         #C:\Users\Lenovo\Desktop\Bomber1\Bomberman1
-        self.endereco_img ='C:/Users/Lenovo/Desktop/Bomber1/Bomberman1/sprites'
+        self.endereco_img ='/home/gabriel/Bomber/Bomberman1/sprites'
